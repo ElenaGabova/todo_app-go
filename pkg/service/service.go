@@ -1,4 +1,7 @@
 package service;
+import (
+	"github.com/ElenaGabova/todo_app-go.git/pkg/repository"
+)
 
 type Autorization interface {
 }
