@@ -1,14 +1,18 @@
 package main
 
 import (
-	
+	"log"
+
 	"github.com/ElenaGabova/todo_app-go.git"
 	"github.com/ElenaGabova/todo_app-go.git/pkg/handler"
-	"log"
+	"github.com/ElenaGabova/todo_app-go.git/pkg/repository"
+	"github.com/ElenaGabova/todo_app-go.git/pkg/service"
 )
 
 func main() {
-	handlers:= new (handler.Handler)
+	repos := repository.NewRepository()
+	servives := service.NewService(repos)
+	handlers := handler.NewHandler(servives)
 
 	srv := new(todo.Server)
 	if err := srv.Run("8080", handlers.InitRoutes()); err != nil {
